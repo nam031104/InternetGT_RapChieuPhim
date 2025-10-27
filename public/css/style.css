@@ -1,0 +1,144 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #20232a;
+  color: white;
+  padding: 10px 0;
+}
+
+.movie-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.movie-card {
+  background: white;
+  width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.movie-card img {
+  width: 100%;
+}
+
+.movie-card button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.movie-card button:hover {
+  background: #0056b3;
+}
+
+.seats .seat {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+}
+
+.seats .seat.selected {
+  background-color: #28a745;
+  color: white;
+}
+
+.banner {
+  background-color: rgba(124, 7, 7, 0.911);
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  position: relative;
+}
+
+.banner .overlay {
+  background-color: rgba(0, 0, 0, 0);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner h1 {
+  font-size: 2.5em;
+  color: #ffcc00;
+}
+
+.banner p {
+  font-size: 1.2em;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #ffcc00;
+  padding: 0.5em 0;
+  text-align: center;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.navbar a {
+  color: rgba(16, 20, 230, 0.897);
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #ff1e00;
+}
+
+/* Container */
+.container {
+  padding: 2em;
+}
+
+.movie-info button {
+  margin-top: 10px;
+  background-color: #f4f800;
+  border: none;
+  padding: 0.5em 1em;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.movie-info button:hover {
+  background-color: #ff1e00;
+}
+
+/* Footer */
+footer {
+  background-color: #000;
+  color: #aaa;
+  text-align: center;
+  padding: 1.5em 0;
+  font-size: 0.9em;
+}

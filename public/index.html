@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/test.css" />
+    <title>Rạp PNT</title>
+  </head>
+  <body id="trangChu">
+    <header>
+      <div class="banner">
+        <h1>Rạp Chiếu Phim PNT</h1>
+      </div>
+      <nav class="navbar">
+        <a href="#trangChu">Trang chủ</a>
+        <a href="#troToiPhimDangChieu">Phim đang chiếu</a>
+        <a href="#troToiPhimSapChieu">Phim sắp chiếu</a>
+        <a href="#">Mua vé</a>
+        <a href="/signin" class="signin">Đăng nhập</a>
+      </nav>
+    </header>
+
+    <div class="quangCaoDiv">
+      <ul id="quangCaoUl"></ul>
+      <button id="nutTruoc">&lt</button>
+      <button id="nutSau">&gt</button>
+    </div>
+
+    <h2 id="tro">Phim</h2>
+    <section id="phim"></section>
+
+    <h2 id="troToiPhimDangChieu">Phim đang chiếu</h2>
+    <section id="phimDangChieu"></section>
+
+    <h2 id="troToiPhimSapChieu">Phim sắp chiếu</h2>
+    <section id="phimSapChieu"></section>
+
+    <script src="./js/data.js"></script>
+    <script src="./js/test.js"></script>
+  </body>
+</html>

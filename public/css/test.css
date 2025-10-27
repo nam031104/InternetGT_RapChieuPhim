@@ -1,0 +1,177 @@
+:root {
+  --mau-chu: rgb(208, 221, 21);
+  --do: #cd2c58;
+  --hong: #e06b80;
+  --vang: #ffc69d;
+  --da: #ffe6d4;
+  --xanh: #2907c0;
+
+  --vang1: #f4f754;
+  --do1: #bf092f;
+
+  --vang2: #f5ad18;
+  --donhat2: #9e1c60;
+  --do2: #811844;
+  --dodam2: #561530;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  background-color: var(--vang2);
+  z-index: 250;
+}
+
+.banner {
+  color: var(--do2);
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: bold;
+}
+
+.navbar {
+  font: bold;
+  font-size: 20px;
+  text-align: center;
+  height: 50px;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  padding-top: 50px;
+}
+
+.navbar a {
+  margin: 20px;
+  color: var(--do2);
+}
+
+.navbar a:hover {
+  color: var(--xanh);
+}
+
+.quangCaoDiv {
+  position: relative;
+}
+
+/* .navbar .singin {
+  margin-right: 20px;
+} */
+
+/* #quangCaoUl {
+  overflow: hidden;
+  top: 0px;
+  left: 0px;
+  display: block;
+  visibility: hidden;
+} */
+
+#quangCaoUl ol {
+  display: inline-block;
+  width: 100px;
+  height: 200px;
+}
+
+#quangCaoUl ol img {
+  position: absolute;
+  top: 0;
+  left: 160px;
+  width: 1000px;
+  height: 360px;
+}
+
+.quangCaoDiv button {
+  font-size: 40px;
+  width: 50px;
+  height: 50px;
+  color: white;
+  background-color: rgba(128, 123, 123, 0.548);
+  opacity: 70%;
+  z-index: 200;
+  border-radius: 50%;
+}
+
+.quangCaoDiv button:hover {
+  opacity: 100%;
+  background-color: rgba(77, 67, 67, 0.767);
+}
+
+#nutSau {
+  position: absolute;
+  top: 150px;
+  right: 205px;
+}
+
+#nutTruoc {
+  position: absolute;
+  top: 150px;
+  left: 200px;
+}
+
+/* section {
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  transition: transform 1s ease;
+  scroll-behavior: smooth;
+}
+
+section div {
+  margin-left: 20px;
+  font: bold;
+  background-color: antiquewhite;
+  border-radius: 8px;
+  width: 200px;
+  text-align: center;
+  margin: 5px;
+  padding: 10px;
+}
+
+section div img {
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+} */
+
+section {
+  box-sizing: border-box;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-left: 20px;
+  gap: 10px;
+}
+
+section div {
+  font-weight: bold;
+  background-color: antiquewhite;
+  border-radius: 8px;
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+  flex: 0 0 auto;
+}
+
+section div img {
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+h2 {
+  font-size: 40px;
+  color: red;
+  text-align: center;
+}
