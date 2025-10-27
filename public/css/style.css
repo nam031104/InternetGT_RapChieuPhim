@@ -1,144 +1,173 @@
+:root {
+  --navy: #041a3b;
+  --blue: #0b4aa6;
+  --orange: #fdb813;
+  --white: #ffffff;
+  --gray-light: #d9d9d9;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  text-align: center;
   margin: 0;
-  padding: 0;
+  padding-top: 60px;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background-color: var(--navy);
+  color: var(--white);
 }
 
+/* HEADER & NAVIGATION */
 header {
-  background-color: #20232a;
-  color: white;
-  padding: 10px 0;
-}
-
-.movie-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-}
-
-.movie-card {
-  background: white;
-  width: 200px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-.movie-card img {
+  position: fixed;
+  top: 0;
   width: 100%;
-}
-
-.movie-card button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.movie-card button:hover {
-  background: #0056b3;
-}
-
-.seats .seat {
-  width: 40px;
-  height: 40px;
-  margin: 5px;
-  border-radius: 5px;
-  background-color: #ccc;
-  border: none;
-  cursor: pointer;
-}
-
-.seats .seat.selected {
-  background-color: #28a745;
-  color: white;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: var(--navy);
+  z-index: 250;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .banner {
-  background-color: rgba(124, 7, 7, 0.911);
-  background-size: cover;
-  background-position: center;
-  height: 200px;
-  position: relative;
-}
-
-.banner .overlay {
-  background-color: rgba(0, 0, 0, 0);
+  width: 25%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--orange);
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.banner h1 {
-  font-size: 2.5em;
-  color: #ffcc00;
-}
-
-.banner p {
-  font-size: 1.2em;
-}
-
-/* Navbar */
 .navbar {
-  background-color: #ffcc00;
-  padding: 0.5em 0;
-  text-align: center;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
-.navbar ul {
-  list-style: none;
+.navbar a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.navbar a:hover {
+  color: var(--orange);
+  transform: translateY(-2px);
+}
+
+/* SLIDER / QUẢNG CÁO */
+.quangCaoDiv {
+  position: relative;
+  width: 100%;
+  height: 360px; /* chiều cao cố định như mẫu bạn trước */
+  overflow: hidden;
+  background-color: var(--navy);
+}
+
+#quangCaoUl {
   margin: 0;
   padding: 0;
 }
 
-.navbar li {
-  display: inline-block;
-  margin: 0 15px;
+#quangCaoUl ol {
+  list-style: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.navbar a {
-  color: rgba(16, 20, 230, 0.897);
-  font-weight: bold;
-  transition: color 0.3s;
+#quangCaoUl ol img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px; /* giữ theo bạn */
+  height: 360px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.6s ease-in-out;
 }
 
-.navbar a:hover {
-  color: #ff1e00;
-}
-
-/* Container */
-.container {
-  padding: 2em;
-}
-
-.movie-info button {
-  margin-top: 10px;
-  background-color: #f4f800;
+/* Nút điều hướng */
+.quangCaoDiv button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32px;
+  width: 50px;
+  height: 50px;
+  color: var(--white);
+  background-color: rgba(0, 0, 0, 0.4);
   border: none;
-  padding: 0.5em 1em;
-  font-weight: bold;
+  border-radius: 50%;
+  opacity: 0.8;
   cursor: pointer;
-  border-radius: 4px;
+  transition: background-color 0.3s, opacity 0.3s;
+  z-index: 200;
 }
 
-.movie-info button:hover {
-  background-color: #ff1e00;
+.quangCaoDiv button:hover {
+  background-color: var(--orange);
+  color: var(--navy);
+  opacity: 1;
 }
 
-/* Footer */
-footer {
-  background-color: #000;
-  color: #aaa;
+#nutTruoc {
+  left: 200px; /* giữ theo bạn */
+}
+
+#nutSau {
+  right: 200px;
+}
+
+/* DANH SÁCH PHIM */
+section {
+  box-sizing: border-box;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 40px 20px;
+  gap: 20px;
+}
+
+section div {
+  background-color: var(--blue);
+  border-radius: 10px;
+  width: 200px;
   text-align: center;
-  padding: 1.5em 0;
-  font-size: 0.9em;
+  padding: 10px;
+  flex: 0 0 auto;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+section div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+section div img {
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+section div p {
+  margin-top: 10px;
+  color: var(--orange);
+  font-weight: bold;
+}
+
+/* TIÊU ĐỀ */
+h2 {
+  font-size: 36px;
+  color: var(--orange);
+  text-align: center;
+  margin-top: 40px;
 }
