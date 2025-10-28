@@ -70,6 +70,7 @@ body {
 
 .quangCaoDiv {
   position: relative;
+  display: inline-block;
 }
 
 /* .navbar .singin {
@@ -93,10 +94,11 @@ body {
 #quangCaoUl ol img {
   position: absolute;
   top: 20px;
-  left: 170px;
-  width: 1000px;
-  height: 400px;
+  left: 10%;
   border-radius: 10px;
+  width: 90%;
+  max-width: 1000px;
+  height: 400px;
 }
 
 .quangCaoDiv button {
