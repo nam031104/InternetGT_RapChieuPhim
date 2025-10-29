@@ -1,0 +1,413 @@
+/* Biến CSS */
+:root {
+  --primary-color: #0a2e5a; /* Xanh đậm - Màu nền Header/Footer/Button */
+  --secondary-color: #f5f5f5; /* Nền trắng xám */
+  --accent-color: #ff7f50; /* Màu cam nổi bật (thay thế màu cam của Beta) */
+  --text-color: #333;
+  --light-text-color: #fff;
+  --border-color: #ccc;
+  --font-family: "Arial", sans-serif;
+}
+
+/* Thiết lập chung */
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* ------------------- HEADER ------------------- */
+.header-top {
+  background-color: #eee;
+  color: var(--primary-color);
+  padding: 5px 0;
+  text-align: right;
+  font-size: 0.85em;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-top-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header-top a {
+  color: var(--primary-color);
+  margin-left: 15px;
+}
+
+.header-main {
+  background-color: var(--light-text-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.logo span {
+  color: var(--accent-color);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 25px;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  font-weight: 500;
+  padding: 8px 0;
+  display: block;
+  position: relative;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.sub-menu {
+  background-color: var(--primary-color);
+  color: var(--light-text-color);
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.sub-menu a {
+  color: var(--light-text-color);
+}
+.sub-menu a:hover {
+  color: var(--accent-color);
+}
+/* ------------------- MAIN CONTENT (FORM) ------------------- */
+.main-content {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.login-box {
+  background: var(--light-text-color);
+  padding: 40px 50px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  width: 400px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.tab-menu {
+  display: flex;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-button {
+  /* Đổi tên từ button sang .tab-button */
+  flex-grow: 1;
+  padding: 15px 10px;
+  border: none;
+  background: none;
+  font-size: 1.1em;
+  cursor: pointer;
+  color: var(--text-color);
+  position: relative;
+}
+
+.tab-button.active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1em;
+  box-sizing: border-box;
+  color: var(--text-color);
+}
+
+.form-group input::placeholder {
+  color: #aaa;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.forgot-link {
+  display: block;
+  text-align: right;
+  margin-bottom: 20px;
+  font-size: 0.9em;
+}
+
+/* CAPTCHA */
+.captcha-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.captcha-image {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-size: 1.2em;
+  font-style: italic;
+  text-decoration: line-through;
+  color: var(--primary-color);
+  width: 80px;
+  text-align: center;
+  border-radius: 4px;
+  user-select: none; /* Ngăn người dùng chọn mã captcha */
+}
+
+.captcha-refresh {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.captcha-input {
+  flex-grow: 1;
+}
+
+/* Nút */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: opacity 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background-color: var(--accent-color); /* Cam */
+  color: var(--light-text-color);
+}
+
+.btn-secondary {
+  background-color: #3b5998; /* Xanh Facebook */
+  color: var(--light-text-color);
+}
+
+/* ------------------- FOOTER ------------------- */
+.footer {
+  background-color: var(--light-text-color);
+  border-top: 1px solid #ddd;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  margin-top: 40px; /* Thêm khoảng cách với nội dung chính */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-section {
+  flex-basis: calc(33.333% - 20px);
+  min-width: 250px;
+}
+
+.footer-logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.footer-logo span {
+  color: var(--accent-color);
+}
+
+.footer-section h4 {
+  color: var(--primary-color);
+  font-size: 1.1em;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+  font-size: 0.9em;
+}
+
+.footer-section ul li a {
+  color: var(--text-color);
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1.5em;
+  color: #888;
+}
+
+.social-icons a:hover {
+  color: var(--primary-color);
+}
+
+.bocongthuong {
+  width: 150px;
+  margin-top: 15px;
+}
+
+/* ------------------- STYLES CHO FORM ĐĂNG KÝ (REGISTRATION) ------------------- */
+.registration-form {
+  padding-top: 10px; /* Thêm khoảng cách với tab */
+}
+
+.form-row {
+  display: flex;
+  gap: 15px; /* Khoảng cách giữa các cột */
+  margin-bottom: 5px; /* Giảm khoảng cách giữa các hàng */
+}
+
+.form-group.half-width {
+  flex: 1; /* Chiếm một nửa chiều rộng */
+}
+
+/* Chỉnh lại input để nó khớp với các select */
+.form-group.half-width input {
+  width: 100%;
+}
+
+/* Group cho Ngày/Tháng/Năm */
+.date-group {
+  display: flex;
+  gap: 5px;
+}
+
+.date-select {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1em;
+  box-sizing: border-box;
+  color: var(--text-color);
+  background-color: var(--light-text-color);
+}
+
+/* Chỉnh lại label trong form đăng ký */
+.registration-form label {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 5px;
+  display: block; /* Đảm bảo label chiếm đủ không gian trên input */
+}
+
+/* Style cho Checkbox Điều khoản */
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.terms-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 4px; /* Căn chỉnh với dòng chữ */
+  margin-right: 10px;
+}
+
+#co {
+  width: 15px;
+  height: auto;
+}
+
+#bct {
+  width: 180px;
+  height: auto;
+}

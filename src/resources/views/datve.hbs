@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="../../CSS/datve.css">
+<main>
+        <div id="booking-wrapper">
+            <h1>ĐẶT VÉ XEM PHIM</h1>
+            
+            
+            <div id="showtime-selection" class="selection-section">
+                
+                <p class="price-info">
+                    Giá vé hiện tại: <span id="price-per-seat"></span> VNĐ/vé
+                </p>
+
+                <h2>1. Chọn Ngày Chiếu</h2>
+                <div id="date-buttons" class="button-group">
+                   
+                </div>
+                
+                <h2>2. Chọn Khung Giờ</h2>
+                <div id="time-buttons" class="button-group">
+                    <p>Vui lòng chọn ngày chiếu trước.</p>
+                </div>
+            </div>
+
+            
+            <div id="seat-container">
+                <div class="showtime-details-bar">
+                    Bạn đang chọn suất chiếu: 
+                    <span id="selected-time-display">...</span>
+                    - Ngày: 
+                    <span id="selected-date-display">...</span>
+                </div>
+                
+                <div class="screen">MÀN CHIẾU</div>
+
+                <div id="seats-grid" class="seats-grid">
+                   
+                </div>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color available"></div>
+                        Ghế trống
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color selected"></div>
+                        Đang chọn
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color occupied"></div>
+                        Đã bán
+                    </div>
+                </div>
+
+                <div id="booking-summary">
+                    <p>
+                        Bạn đã chọn <span id="count">0</span> ghế với tổng tiền là <span id="total">0</span> VNĐ.
+                    </p>
+                    <button id="book-button">Thanh toán</button>
+                </div>
+                
+            </div>
+            
+        </div>
+    </main>
+
+    
+    <script src="./../../JS/datve.js"></script>
