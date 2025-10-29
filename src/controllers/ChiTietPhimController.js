@@ -1,21 +1,27 @@
 const path = require("path");
 const { connectDB } = require("../config/db");
+const {
+  getAllUsers,
+  // addUser,
+  // getUserById,
+  // updateUser,
+  // deleteUser,
+} = require("../config/userService");
 
 class chiTietPhimController {
   trang(req, res) {
-    res.sendFile(path.join(__dirname, "..", "public", "ChiTietPhim.html"));
+    res.reder("chiTietPhim");
   }
 
   async hienthi(req, res) {
     try {
-      const pool = await connectDB(); // phải await vì connect async
-      const result = await pool.request().query("SELECT * FROM Phim"); // await query
-      res.json(result.recordset); // recordset chứa mảng dữ liệu
-    } catch (err) {
-      console.error(err);
-      res.status(500).send("Server error");
+      const users = await getAllUsers();
+      console.log("Dữ liệu Users trong Controller:", users); // Thêm dòng này
+      res.render("home", { users: users }); // Đảm bảo tên biến là 'users'
+    } catch (error) {
+      console.error("❌ Lỗi khi lấy users:", error);
+      res.status(500).send("Lỗi server");
     }
   }
 }
-
 module.exports = new chiTietPhimController();
