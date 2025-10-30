@@ -1,0 +1,44 @@
+<section class="form-container">
+  <form id="addShowtimeForm" action="/api/showtimes" method="POST">
+    <h2>🎬 Thêm Lịch Chiếu Mới</h2>
+
+    <label for="tenphim">Tên phim:</label>
+    <input
+      type="text"
+      id="tenphim"
+      name="tenphim"
+      placeholder="Nhập tên phim..."
+      required
+    />
+
+    <label for="ngayChieu">Ngày chiếu:</label>
+    <input type="date" id="ngayChieu" name="ngayChieu" required />
+
+    <label for="gioBatDau">Giờ bắt đầu:</label>
+    <input type="time" id="gioBatDau" name="gioBatDau" required />
+
+    <label for="gioKetThuc">Giờ kết thúc:</label>
+    <input type="time" id="gioKetThuc" name="gioKetThuc" required />
+
+    <label for="gia">Giá vé:</label>
+    <input
+      type="number"
+      step="0.01"
+      id="gia"
+      name="gia"
+      placeholder="VD: 85000"
+      required
+    />
+
+    <label for="tblAuditoriumid">Phòng chiếu (ID):</label>
+    <input
+      type="number"
+      id="tblAuditoriumid"
+      name="tblAuditoriumid"
+      placeholder="Nhập ID phòng..."
+      required
+    />
+
+    <button type="submit">Thêm lịch chiếu</button>
+  </form>
+</section>

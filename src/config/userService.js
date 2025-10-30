@@ -6,8 +6,16 @@ async function getAllUsers() {
     throw new Error("Không thể kết nối đến database.");
   }
   const result = await pool.request().query("SELECT * FROM tblMovie");
-  console.log("Dữ liệu Users trả về:", result.recordset); // Thêm dòng này
   return result.recordset;
+}
+
+async function getMovieByTen(ten) {
+  const pool = await poolPromise;
+  const result = await pool
+    .request()
+    .input("ten", sql.NVarChar, ten)
+    .query("SELECT * FROM tblMovie WHERE tenphim = @ten");
+  return result.recordset[0];
 }
 
 async function getUserById(id) {
@@ -49,6 +57,7 @@ async function deleteUser(id) {
 }
 
 module.exports = {
+  getMovieByTen,
   getAllUsers,
   getUserById,
   addUser,

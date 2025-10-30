@@ -2,6 +2,7 @@ const path = require("path");
 const { connectDB } = require("../config/db");
 const {
   getAllUsers,
+  getMovieByTen,
   // addUser,
   // getUserById,
   // updateUser,
@@ -9,8 +10,42 @@ const {
 } = require("../config/userService");
 
 class chiTietPhimController {
-  trang(req, res) {
-    res.reder("chiTietPhim");
+  async chiTietPhim(req, res) {
+    try {
+      // console.log("getMovieByTen =", getMovieByTen);
+      const tenPhim = decodeURIComponent(req.params.slug);
+
+      const phim = await getMovieByTen(tenPhim);
+
+      const fullUrl = phim.trailerLink;
+      // 1. Tạo đối tượng URL để phân tích
+      const urlObject = new URL(fullUrl);
+      // 2. Sử dụng .searchParams để tìm giá trị của tham số 'v'
+      const videoId = urlObject.searchParams.get("v");
+      // Kết quả: "DNtbMv46b2w"
+      // 3. Tạo URL nhúng (Embed URL)
+      const videoTrailerEmbed = `https://www.youtube.com/embed/${videoId}`;
+
+      res.render("chiTietPhim", {
+        tenphim: phim.tenphim,
+        posterLink: phim.posterLink,
+        theloai: phim.theloai,
+        daodien: phim.daodien,
+        thoiluong: phim.thoiluong,
+        ngayKhoiChieu: phim.ngayKhoiChieu,
+        moTa: phim.mota,
+        videoTrailerEmbed: videoTrailerEmbed,
+      });
+
+      if (!phim) {
+        return res
+          .status(404)
+          .render("404", { message: "Không tìm thấy phim" });
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).render("500", { message: "Lỗi server!" });
+    }
   }
 
   async hienthi(req, res) {

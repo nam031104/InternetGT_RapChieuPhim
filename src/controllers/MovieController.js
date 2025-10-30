@@ -12,7 +12,6 @@ class movieController {
   async trangchu(req, res) {
     try {
       const users = await getAllUsers();
-      console.log("Dữ liệu Users trong Controller:", users); // Thêm dòng này
       res.render("home", { users: users }); // Đảm bảo tên biến là 'users'
     } catch (error) {
       console.error("❌ Lỗi khi lấy users:", error);
@@ -23,7 +22,6 @@ class movieController {
   async hienthi(req, res) {
     try {
       const users = await getAllUsers();
-      console.log("Dữ liệu Users trong Controller:", users); // Thêm dòng này
       res.render("home", { users: users }); // Đảm bảo tên biến là 'users'
     } catch (error) {
       console.error("❌ Lỗi khi lấy users:", error);

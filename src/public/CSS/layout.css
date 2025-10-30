@@ -29,12 +29,13 @@ a:hover {
 }
 
 .header-top {
-  background-color: #eee;
-  color: var(--primary-color);
+  background-color: #0e0d0d;
+  color: var(--secondary-color);
   padding: 5px 0;
   text-align: right;
   font-size: 0.85em;
   border-bottom: 1px solid #ddd;
+  height: 15px;
 }
 
 .header-top-content {
@@ -44,7 +45,7 @@ a:hover {
 }
 
 .header-top a {
-  color: var(--primary-color);
+  color: var(--secondary-color);
   margin-left: 15px;
 }
 
@@ -194,4 +195,9 @@ a:hover {
 .bocongthuong {
   width: 150px;
   margin-top: 15px;
+}
+
+#co {
+  width: 20px;
+  height: auto;
 }

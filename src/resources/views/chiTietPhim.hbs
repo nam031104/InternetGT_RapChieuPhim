@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="../../CSS/chiTietPhim.css" />
+<main>
+
+  <div class="container">
+    <div class="movie-detail">
+      <div class="poster">
+        <img src="{{posterLink}}" alt="{{tenphim}}" />
+      </div>
+      <div class="info">
+        <h1>{{tenphim}}</h1>
+        <div class="meta">
+          <span>Thể loại: {{theloai}}</span><br />
+          <span>Đạo diễn: {{daodien}}</span><br />
+          <span>Diễn viên: {{dienvien}}</span><br />
+          <span>Thời lượng: {{thoiluong}} phút</span><br />
+          <span>Khởi chiếu: {{ngayKhoiChieu}}</span>
+        </div>
+        <div class="description">
+          {{{moTa}}}
+        </div>
+        <div class="cta">
+          <a href="/datve/{{idPhim}}">Đặt vé ngay</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="movie-additional">
+      <div class="row">
+        <div class="col" style="text-align: center;">
+          <h3>Trailer</h3>
+          <iframe
+            width="560"
+            height="315"
+            src="{{videoTrailerEmbed}}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
