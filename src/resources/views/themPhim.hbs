@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="../../CSS/themPhim.css" />
+
+<main>
+  <div class="container">
+    <h1>Thêm Phim Mới</h1>
+
+    {{#if error}}
+      <div class="error-message">{{error}}</div>
+    {{/if}}
+
+    <form action="/themPhim" method="POST">
+      <label for="tenphim">Tên Phim *</label>
+      <input type="text" id="tenphim" name="tenphim" required />
+
+      <label for="theloai">Thể Loại *</label>
+      <input type="text" id="theloai" name="theloai" required />
+
+      <label for="thoiluong">Thời Lượng (phút) *</label>
+      <input type="number" id="thoiluong" name="thoiluong" min="1" required />
+
+      <label for="daodien">Đạo Diễn *</label>
+      <input type="text" id="daodien" name="daodien" required />
+
+      <label for="ngayKhoiChieu">Ngày Khởi Chiếu *</label>
+      <input type="date" id="ngayKhoiChieu" name="ngayKhoiChieu" required />
+
+      <label for="mota">Mô Tả</label>
+      <textarea id="mota" name="mota" placeholder="Mô tả phim..."></textarea>
+
+      <label for="posterLink">Link Poster</label>
+      <input
+        type="text"
+        id="posterLink"
+        name="posterLink"
+        placeholder="https://..."
+      />
+
+      <label for="trailerLink">Link Trailer</label>
+      <input
+        type="text"
+        id="trailerLink"
+        name="trailerLink"
+        placeholder="https://..."
+      />
+
+      <button type="submit">Thêm Phim</button>
+    </form>
+  </div>
+</main>

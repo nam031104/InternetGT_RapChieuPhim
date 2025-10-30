@@ -9,7 +9,7 @@ const {
   // deleteUser,
 } = require("../config/userService");
 
-class chiTietPhimController {
+class ChiTietPhimController {
   async chiTietPhim(req, res) {
     try {
       // console.log("getMovieByTen =", getMovieByTen);
@@ -59,4 +59,4 @@ class chiTietPhimController {
     }
   }
 }
-module.exports = new chiTietPhimController();
+module.exports = new ChiTietPhimController();
