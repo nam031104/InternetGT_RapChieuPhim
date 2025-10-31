@@ -18,6 +18,9 @@ app.use(
 const hbs = create({
   defaultLayout: "main",
   extname: ".hbs",
+  helpers: {
+    json: (context) => JSON.stringify(context),
+  },
 });
 
 app.use(
@@ -27,6 +30,7 @@ app.use(
 );
 app.use(express.json());
 app.engine("hbs", hbs.engine);
+
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "./resources/views"));
 

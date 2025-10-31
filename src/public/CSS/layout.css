@@ -28,7 +28,7 @@ a:hover {
   color: var(--accent-color);
 }
 
-.header-top {
+.header-top1 {
   background-color: #0e0d0d;
   color: var(--secondary-color);
   padding: 5px 0;
@@ -44,7 +44,7 @@ a:hover {
   padding: 0 20px;
 }
 
-.header-top a {
+.header-top1 a {
   color: var(--secondary-color);
   margin-left: 15px;
 }

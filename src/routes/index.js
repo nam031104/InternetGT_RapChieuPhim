@@ -4,10 +4,12 @@ const chiTietPhimRoute = require("./chiTietPhimRoutes");
 const datveRoute = require("./datveRoutes");
 const themLichChieu = require("./themLichChieuRoutes");
 const themPhim = require("./themPhimRoutes");
+const apiRoute = require("./apiRoutes");
 
 function route(app) {
   app.use("/themPhim", themPhim);
   app.use("/api/showtimes", themLichChieu);
+  app.use("/api", apiRoute);
   app.use("/datve", datveRoute);
   app.use("/chiTietPhim", chiTietPhimRoute);
   app.use("/signin", signinRoute);

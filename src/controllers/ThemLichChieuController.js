@@ -15,12 +15,12 @@ const formatTime = (t) => {
   return null;
 };
 
-function toSQLTimeFromDate(ngayChieu, timeString) {
-  if (!ngayChieu || !timeString) return null;
+function toSQLTime(timeString) {
+  if (!timeString) return null;
   const [h, m, s = "00"] = timeString.split(":");
-  const date = new Date(ngayChieu);
-  date.setHours(parseInt(h), parseInt(m), parseInt(s), 0);
-  return date;
+  const d = new Date();
+  d.setHours(parseInt(h), parseInt(m), parseInt(s), 0);
+  return d;
 }
 
 class ThemLichChieuController {
@@ -28,8 +28,8 @@ class ThemLichChieuController {
     const { tenphim, ngayChieu, gioBD, gioKT, gia, tblAuditoriumid } = req.body;
     const gioBDau = formatTime(gioBD);
     const gioKThuc = formatTime(gioKT);
-    const gioBatDau = toSQLTimeFromDate(ngayChieu, gioBDau);
-    const gioKetThuc = toSQLTimeFromDate(ngayChieu, gioKThuc);
+    const gioBatDau = toSQLTime(gioBDau);
+    const gioKetThuc = toSQLTime(gioKThuc);
     console.log(req.body);
     console.log(gioBatDau);
     console.log(gioKetThuc);

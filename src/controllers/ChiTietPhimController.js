@@ -27,6 +27,7 @@ class ChiTietPhimController {
       const videoTrailerEmbed = `https://www.youtube.com/embed/${videoId}`;
 
       res.render("chiTietPhim", {
+        id: phim.id,
         tenphim: phim.tenphim,
         posterLink: phim.posterLink,
         theloai: phim.theloai,

@@ -1,7 +1,15 @@
-const datveController = require("../controllers/Datvecontroller");
+const datveController = require("../controllers/DatVeController");
 const express = require("express");
 const router = express.Router();
 
-router.get("/", datveController.Datve);
+router.get("/:movieId", datveController.Datve);
+router.get("/", (req, res) => {
+  res.send(`
+    <script>
+      alert("Hãy chọn phim trước rồi đặt vé!");
+      window.location.href = "/";
+    </script>
+  `);
+});
 
 module.exports = router;

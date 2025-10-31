@@ -1,54 +1,56 @@
-<link rel="stylesheet" href="../../CSS/datve.css" />
+<link rel="stylesheet" href="/CSS/datve.css" />
+
 <main>
   <div id="booking-wrapper">
     <h1>ĐẶT VÉ XEM PHIM</h1>
 
-    <div id="showtime-selection" class="selection-section">
-
+    <div class="movie-info-header">
+      <h2 id="movie-title">{{movie.tenPhim}}</h2>
+      <p>Phòng chiếu: <span id="auditorium-name">{{phong}}</span></p>
       <p class="price-info">
-        Giá vé hiện tại:
-        <span id="price-per-seat"></span>
+        Giá vé cơ bản:
+        <span id="price-per-seat">{{movie.giaVe}}</span>
         VNĐ/vé
       </p>
-
-      <h2>1. Chọn Ngày Chiếu</h2>
-      <div id="date-buttons" class="button-group">
-
-      </div>
-
-      <h2>2. Chọn Khung Giờ</h2>
-      <div id="time-buttons" class="button-group">
-        <p>Vui lòng chọn ngày chiếu trước.</p>
-      </div>
     </div>
 
-    <div id="seat-container">
+    <h2>1. Chọn Ngày Chiếu</h2>
+    <div id="date-buttons" class="button-group">
+      <!-- Nút ngày sẽ được JS render -->
+    </div>
+
+    <h2>2. Chọn Khung Giờ</h2>
+    <div id="time-buttons" class="button-group">
+      <p>Vui lòng chọn ngày chiếu để xem các suất giờ.</p>
+    </div>
+
+    <!-- JSON dữ liệu suất chiếu -->
+    <script id="showtime-data" type="application/json">
+      {{{json showtimesGrouped}}}
+    </script>
+
+    <div id="seat-container" style="display: none;">
       <div class="showtime-details-bar">
         Bạn đang chọn suất chiếu:
         <span id="selected-time-display">...</span>
         - Ngày:
         <span id="selected-date-display">...</span>
+        - Phòng:
+        <span id="auditorium-display">...</span>
       </div>
 
       <div class="screen">MÀN CHIẾU</div>
 
       <div id="seats-grid" class="seats-grid">
-
+        <!-- Sơ đồ ghế sẽ render bằng JS -->
       </div>
 
       <div class="legend">
-        <div class="legend-item">
-          <div class="legend-color available"></div>
-          Ghế trống
-        </div>
-        <div class="legend-item">
-          <div class="legend-color selected"></div>
-          Đang chọn
-        </div>
-        <div class="legend-item">
-          <div class="legend-color occupied"></div>
-          Đã bán
-        </div>
+        <div class="legend-item"><div class="legend-color available"></div>Ghế
+          trống</div>
+        <div class="legend-item"><div class="legend-color selected"></div>Đang
+          chọn</div>
+        <div class="legend-item"><div class="legend-color occupied"></div>Đã bán</div>
       </div>
 
       <div id="booking-summary">
@@ -61,10 +63,8 @@
         </p>
         <button id="book-button">Thanh toán</button>
       </div>
-
     </div>
-
   </div>
 </main>
 
-<script src="./../../JS/datve.js"></script>
+<script src="/JS/datve.js"></script>
