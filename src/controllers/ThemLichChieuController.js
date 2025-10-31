@@ -117,7 +117,7 @@ class ThemLichChieuController {
   }
 
   hienthi(req, res) {
-    res.render("themLichChieu");
+    res.render("themLichChieu", { layout: "nhanvien" });
   }
 }
 module.exports = new ThemLichChieuController();

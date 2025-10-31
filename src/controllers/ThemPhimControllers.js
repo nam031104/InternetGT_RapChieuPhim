@@ -3,7 +3,7 @@ const { sql, poolPromise } = require("../config/db");
 class ThemPhimController {
   // Hiển thị form thêm phim
   hienthi(req, res) {
-    res.render("themPhim");
+    res.render("themPhim", { layout: "nhanvien" });
   }
 
   // Xử lý thêm phim mới

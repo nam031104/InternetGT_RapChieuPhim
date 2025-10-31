@@ -1,26 +1,45 @@
 const path = require("path");
 const { sql, poolPromise } = require("../config/db");
 
-class signinController {
+class SigninController {
+  // -------------------------------------------
+  // GET /signin
+  // -------------------------------------------
   dangnhap(req, res) {
+    console.log("📄 Truy cập trang đăng nhập");
+    console.log("👤 Session hiện tại:", req.session.user);
+
+    // Nếu đã đăng nhập rồi thì redirect
+    if (req.session.user) {
+      if (req.session.user.vaitro === "customer") {
+        return res.redirect("/customer");
+      } else if (req.session.user.vaitro === "staff") {
+        return res.redirect("/employee");
+      }
+    }
+
     res.render("signin");
   }
 
-  // Xử lý đăng nhập
+  // -------------------------------------------
+  // POST /signin
+  // -------------------------------------------
   async Nhan(req, res) {
-    console.log("hello");
     const { username, password } = req.body;
-    console.log(`${req.body}`);
-    console.log(`${username} va ${password}`);
+
+    console.log("🔐 Đang xử lý đăng nhập...");
+    console.log("📝 Username:", username);
+    console.log("📝 Password:", password ? "***" : "empty");
+
     try {
-      // 1️⃣ Kiểm tra input
+      // 1️⃣ Validate
       if (!username || !password) {
         return res.render("signin", {
           error: "Vui lòng nhập đầy đủ thông tin đăng nhập.",
         });
       }
 
-      // 2️⃣ Lấy pool kết nối từ config
+      // 2️⃣ Kết nối DB
       const pool = await poolPromise;
       if (!pool) {
         console.error("❌ Kết nối SQL thất bại!");
@@ -29,7 +48,7 @@ class signinController {
         });
       }
 
-      // 3️⃣ Truy vấn tài khoản
+      // 3️⃣ Query user
       const result = await pool
         .request()
         .input("username", sql.VarChar, username)
@@ -38,15 +57,19 @@ class signinController {
           "SELECT * FROM tblUser WHERE username = @username AND password = @password"
         );
 
-      // 4️⃣ Kiểm tra kết quả
+      console.log("📊 Kết quả query:", result.recordset.length, "user");
+
+      // 4️⃣ Kiểm tra
       if (result.recordset.length === 0) {
         return res.render("signin", {
           error: "Sai tên đăng nhập hoặc mật khẩu.",
         });
       }
 
-      // 5️⃣ Lưu thông tin vào session
       const user = result.recordset[0];
+      console.log("👤 User tìm thấy:", user);
+
+      // 5️⃣ Lưu session
       req.session.user = {
         id: user.id,
         ten: user.ten,
@@ -54,18 +77,31 @@ class signinController {
         vaitro: user.vaitro,
       };
 
-      console.log("✅ Đăng nhập thành công:", req.session.user);
+      console.log("💾 Đã lưu vào session:", req.session.user);
 
-      // 6️⃣ Điều hướng theo vai trò
-      if (user.vaitro === "customer") {
-        return res.redirect("/customer/home");
-      } else if (user.vaitro === "staff") {
-        return res.redirect("/employee");
-      } else {
-        return res.render("signin", {
-          error: "Tài khoản không có vai trò hợp lệ.",
-        });
-      }
+      // 6️⃣ Save session và redirect
+      req.session.save((err) => {
+        if (err) {
+          console.error("❌ Lỗi khi save session:", err);
+          return res.render("signin", {
+            error: "Có lỗi xảy ra, vui lòng thử lại.",
+          });
+        }
+
+        console.log("✅ Session đã được save thành công!");
+        console.log("🔄 Redirect theo vai trò:", user.vaitro);
+
+        // Redirect theo vai trò
+        if (user.vaitro === "customer") {
+          return res.redirect("/customer");
+        } else if (user.vaitro === "staff") {
+          return res.redirect("/employee");
+        } else {
+          return res.render("signin", {
+            error: "Tài khoản không có vai trò hợp lệ.",
+          });
+        }
+      });
     } catch (err) {
       console.error("❌ Lỗi khi đăng nhập:", err);
       return res.render("signin", {
@@ -74,15 +110,21 @@ class signinController {
     }
   }
 
-  // Đăng xuất
+  // -------------------------------------------
+  // GET /dangxuat
+  // -------------------------------------------
   dangxuat(req, res) {
+    console.log("👋 User đăng xuất:", req.session.user);
+
     req.session.destroy((err) => {
       if (err) {
-        console.error("Lỗi khi đăng xuất:", err);
+        console.error("❌ Lỗi khi đăng xuất:", err);
       }
-      res.redirect("/signin");
+
+      console.log("✅ Đã xóa session");
+      res.redirect("/");
     });
   }
 }
 
-module.exports = new signinController();
+module.exports = new SigninController();

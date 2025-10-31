@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   res.send(`
     <script>
       alert("Hãy chọn phim trước rồi đặt vé!");
-      window.location.href = "/";
+      window.location.href = "/customer";
     </script>
   `);
 });
