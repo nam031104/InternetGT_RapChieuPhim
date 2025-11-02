@@ -1,0 +1,63 @@
+<main>
+  {{! views/movies.hbs }}
+
+  <style>
+    /* CSS cơ bản cho bảng (Giữ nguyên hoặc thêm tùy chỉnh) */ table { width:
+    100%; border-collapse: collapse; margin-top: 20px; table-layout: fixed; } /*
+    Thêm table-layout fixed */ th, td { border: 1px solid #ddd; padding: 8px;
+    text-align: left; font-size: 14px; word-wrap: break-word; } /* Thêm
+    word-wrap */ th { background-color: #f2f2f2; } .delete-btn {
+    background-color: #f44336; color: white; border: none; padding: 5px 10px;
+    cursor: pointer; border-radius: 4px; transition: background-color 0.3s; }
+    .delete-btn:hover { background-color: #d32f2f; } .action-column { width:
+    100px; text-align: center; } /* Đặt chiều rộng cho cột Thao Tác */
+    .date-time-column { width: 120px; } /* Đặt chiều rộng cho cột ngày/giờ */
+    .movie-name-column { width: 200px; } /* Đặt chiều rộng cho cột tên phim */
+  </style>
+
+  <h1>{{pageTitle}}</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th class="movie-name-column">Tên Phim</th>
+        <th class="date-time-column">Ngày Chiếu</th>
+        <th class="date-time-column">Giờ Bắt Đầu</th>
+        <th class="date-time-column">Giờ Kết Thúc</th>
+        <th>Giá</th>
+        <th>ID Phòng Chiếu</th>
+
+        <th class="action-column">Thao Tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each lichchieu}}
+        {{! Dùng 'id' là khóa chính của SQL Server để định danh dòng }}
+        <tr id="movie-row-{{this.id}}">
+          <td>{{this.id}}</td>
+          <td>{{this.tenphim}}</td>
+          <td>{{this.ngayChieu}}</td>
+          <td>{{this.gioBatdau}}</td>
+          <td>{{this.gioKetthuc}}</td>
+          <td>{{this.gia}}</td>
+          <td>{{this.tblAuditoriumid}}</td>
+          {{! Cần format date nếu cần }}
+          <td>
+            {{! Nút Xóa: data-id chứa ID của phim }}
+            <button
+              class="delete-btn"
+              data-id="{{this.id}}"
+              data-name="{{this.ngayChieu}}"
+            >
+              Xóa
+            </button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  {{! Nhúng file JavaScript client-side để xử lý sự kiện xóa }}
+  <script src="../../JS/xoaLichChieu.js"></script>
+</main>

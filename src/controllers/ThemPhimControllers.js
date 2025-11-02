@@ -61,7 +61,12 @@ class ThemPhimController {
           (@tenphim, @theloai, @thoiluong, @daodien, @ngayKhoiChieu, @mota, @posterLink, @trailerLink)`
         );
 
-      res.status(201).json({ message: "✅ Thêm phim thành công!" });
+      res.status(201).send(`
+  <script>
+    alert("✅ Thêm phim thành công!");
+    window.history.back();
+  </script>
+`);
     } catch (err) {
       console.error("❌ Lỗi thêm phim:", err);
       res.status(500).json({ message: "Lỗi máy chủ", error: err.message });

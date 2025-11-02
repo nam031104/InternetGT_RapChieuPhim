@@ -1,5 +1,15 @@
 <link rel="stylesheet" href="../../CSS/signin.css" />
 <main class="main-content">
+  <script>
+    {{#if error}}
+      alert("{{error}}");
+    {{/if}}
+
+    {{#if success}}
+      alert("{{success}}");
+    {{/if}}
+  </script>
+
   <div class="login-box">
 
     <div class="tab-menu">
@@ -44,6 +54,7 @@
           </button>
           <input
             type="text"
+            name="captchaLoginInput"
             placeholder="Nhập mã xác thực"
             class="captcha-input"
             required
@@ -61,15 +72,27 @@
     </div>
 
     <div id="register" class="tab-content" style="display: none;">
-      <form class="registration-form">
+      <form class="registration-form" method="POST" action="/register">
         <div class="form-row">
           <div class="form-group half-width">
             <label for="reg-name">Họ tên</label>
-            <input type="text" id="reg-name" placeholder="Họ tên" required />
+            <input
+              type="text"
+              id="reg-name"
+              name="name"
+              placeholder="Họ tên"
+              required
+            />
           </div>
           <div class="form-group half-width">
             <label for="reg-email">Email</label>
-            <input type="email" id="reg-email" placeholder="Email" required />
+            <input
+              type="text"
+              id="reg-email"
+              name="email"
+              placeholder="email"
+              required
+            />
           </div>
         </div>
 
@@ -79,6 +102,7 @@
             <input
               type="password"
               id="reg-pass"
+              name="password"
               placeholder="Mật khẩu"
               required
             />
@@ -88,6 +112,7 @@
             <input
               type="password"
               id="reg-confirm-pass"
+              name="confirmPassword"
               placeholder="Xác nhận mật khẩu"
               required
             />
@@ -98,20 +123,20 @@
           <div class="form-group half-width">
             <label>Ngày sinh</label>
             <div class="date-group">
-              <select class="date-select" id="reg-day">
+              <select class="date-select" id="reg-day" name="day">
                 <option value="">Ngày sinh</option>
               </select>
-              <select class="date-select" id="reg-month">
+              <select class="date-select" id="reg-month" name="month">
                 <option value="">Tháng sinh</option>
               </select>
-              <select class="date-select" id="reg-year">
+              <select class="date-select" id="reg-year" name="year">
                 <option value="">Năm sinh</option>
               </select>
             </div>
           </div>
           <div class="form-group half-width">
             <label>Giới tính</label>
-            <select id="reg-gender" class="date-select">
+            <select id="reg-gender" name="gender" class="date-select">
               <option value="">Giới tính</option>
               <option value="male">Nam</option>
               <option value="female">Nữ</option>
@@ -125,6 +150,7 @@
           <input
             type="tel"
             id="reg-phone"
+            name="phone"
             placeholder="Số điện thoại"
             required
           />
@@ -141,6 +167,7 @@
           </button>
           <input
             type="text"
+            name="captchaInput"
             placeholder="Mã xác thực"
             class="captcha-input"
             required
@@ -148,7 +175,7 @@
         </div>
 
         <div class="form-group terms-checkbox">
-          <input type="checkbox" id="terms" required />
+          <input type="checkbox" id="terms" name="terms" required />
           <label
             for="terms"
             style="display: inline; font-size: 0.9em; color: #666;"
@@ -174,7 +201,6 @@
 
   </div>
 </main>
-
 <script src="../../JS/signin.js">
 
 </script>

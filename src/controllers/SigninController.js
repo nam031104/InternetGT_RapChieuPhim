@@ -8,7 +8,7 @@ class SigninController {
   dangnhap(req, res) {
     console.log("📄 Truy cập trang đăng nhập");
     console.log("👤 Session hiện tại:", req.session.user);
-
+    const { error, success } = req.query;
     // Nếu đã đăng nhập rồi thì redirect
     if (req.session.user) {
       if (req.session.user.vaitro === "customer") {
@@ -18,7 +18,7 @@ class SigninController {
       }
     }
 
-    res.render("signin");
+    res.render("signin", { error, success });
   }
 
   // -------------------------------------------
@@ -107,6 +107,108 @@ class SigninController {
       return res.render("signin", {
         error: "Có lỗi xảy ra, vui lòng thử lại sau.",
       });
+    }
+  }
+
+  async dangky(req, res) {
+    const {
+      name,
+      email,
+      password,
+      confirmPassword,
+      day,
+      month,
+      year,
+      gender,
+      phone,
+      terms,
+    } = req.body;
+
+    try {
+      // 1️⃣ Kiểm tra các trường bắt buộc
+      if (
+        !name ||
+        !email ||
+        !password ||
+        !confirmPassword ||
+        !phone ||
+        !day ||
+        !month ||
+        !year ||
+        !gender ||
+        !terms
+      ) {
+        return res.redirect(
+          `/?error=${encodeURIComponent(
+            "Vui lòng nhập đầy đủ thông tin bắt buộc."
+          )}`
+        );
+      }
+
+      if (password !== confirmPassword) {
+        return res.redirect(
+          `/?error=${encodeURIComponent(
+            "Mật khẩu và xác nhận mật khẩu không khớp."
+          )}`
+        );
+      }
+
+      const pool = await poolPromise;
+      if (!pool) {
+        console.error("❌ Kết nối SQL thất bại!");
+        return res.redirect(
+          `/?error=${encodeURIComponent(
+            "Không thể kết nối đến cơ sở dữ liệu."
+          )}`
+        );
+      }
+
+      // 2️⃣ Kiểm tra Email đã tồn tại
+      const checkEmail = await pool
+        .request()
+        .input("email", sql.VarChar, email)
+        .query("SELECT email FROM tblUser WHERE email = @email");
+
+      if (checkEmail.recordset.length > 0) {
+        return res.redirect(
+          `/?error=${encodeURIComponent(
+            "Email đã được đăng ký, vui lòng chọn email khác."
+          )}`
+        );
+      }
+
+      // 3️⃣ Chuẩn bị dữ liệu
+      const dateOfBirth = `${year}-${month.padStart(2, "0")}-${day.padStart(
+        2,
+        "0"
+      )}`;
+      const defaultRole = "customer";
+
+      // 4️⃣ Lưu dữ liệu vào Database
+      await pool
+        .request()
+        .input("name", sql.NVarChar, name)
+        .input("email", sql.VarChar, email)
+        .input("password", sql.VarChar, password)
+        .input("dateOfBirth", sql.Date, dateOfBirth)
+        .input("gender", sql.VarChar, gender)
+        .input("phone", sql.VarChar, phone)
+        .input("vaitro", sql.VarChar, defaultRole)
+        .query(
+          "INSERT INTO tblUser (ten, username, password, ngaysinh, dienthoai, vaitro) VALUES (@name, @email, @password, @dateOfBirth, @phone, @vaitro)"
+        );
+
+      // 5️⃣ Đăng ký thành công
+      return res.redirect(
+        `/?success=${encodeURIComponent("Đăng ký thành công!")}`
+      );
+    } catch (err) {
+      console.error("❌ Lỗi khi đăng ký:", err);
+      return res.redirect(
+        `/?error=${encodeURIComponent(
+          "Có lỗi xảy ra trong quá trình đăng ký, vui lòng thử lại."
+        )}`
+      );
     }
   }
 

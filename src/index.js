@@ -5,7 +5,7 @@ const path = require("path");
 const route = require("./routes");
 
 const app = express();
-const port = 3001;
+const port = 3008;
 
 // ==========================================
 // 1. Body Parser (PHẢI ĐẶT TRƯỚC SESSION)

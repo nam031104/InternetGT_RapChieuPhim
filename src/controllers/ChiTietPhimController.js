@@ -33,7 +33,7 @@ class ChiTietPhimController {
         theloai: phim.theloai,
         daodien: phim.daodien,
         thoiluong: phim.thoiluong,
-        ngayKhoiChieu: phim.ngayKhoiChieu,
+        ngayKhoiChieu: phim.ngayKhoiChieu.toLocaleDateString("vi-VN"),
         moTa: phim.mota,
         videoTrailerEmbed: videoTrailerEmbed,
       });

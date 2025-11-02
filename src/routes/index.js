@@ -3,7 +3,9 @@ const signinRoute = require("./signinRoutes");
 const chiTietPhimRoute = require("./chiTietPhimRoutes");
 const datveRoute = require("./datveRoutes");
 const themLichChieu = require("./themLichChieuRoutes");
+const xoaLichChieu = require("./xoaLichChieu");
 const themPhim = require("./themPhimRoutes");
+const xoaPhim = require("./xoaPhim")
 const apiRoute = require("./apiRoutes");
 const nhanVienRoute = require("./nhanVienRoutes");
 
@@ -26,7 +28,9 @@ function isLoggedIn(req, res, next) {
 function route(app) {
   app.use("/employee", isLoggedIn);
   app.use("/employee/themPhim", themPhim);
+  app.use("/employee/xoaPhim", xoaPhim);
   app.use("/employee/api/showtimes", themLichChieu);
+  app.use("/employee/xoaLichChieu", xoaLichChieu);
   app.use("/employee", nhanVienRoute);
   app.use("/api", apiRoute);
   app.use("/customer", isLoggedIn);
@@ -34,6 +38,7 @@ function route(app) {
   app.use("/customer/chiTietPhim", chiTietPhimRoute);
   app.use("/customer", movieRoute);
   app.use("/", signinRoute);
+  
 }
 
 module.exports = route;
