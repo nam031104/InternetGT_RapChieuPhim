@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="../../CSS/doanhSo.css" />
+<main>
+  <div class="dashboard-container">
+    <h1 class="header-title">📊 Báo cáo Doanh số Rạp chiếu Phim</h1>
+
+    <div class="total-sales-card">
+      <h2>Tổng Doanh số (Tất cả):</h2>
+      <span class="sales-amount">{{totalSales}} VNĐ</span>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3>Doanh số theo Từng Phim</h3>
+        <canvas id="salesByMovieChart"></canvas>
+      </div>
+
+      <div class="chart-card">
+        <h3>Xu hướng Doanh số 3 Tháng Gần nhất</h3>
+        <canvas id="salesByMonthChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const movieLabels =
+    {{{movieLabels}}}; const movieSales =
+    {{{movieSales}}}; const monthLabels =
+    {{{monthLabels}}}; const monthSales =
+    {{{monthSales}}};
+  </script>
+
+  <script src="../../JS/doanhSo.js"></script>
+</main>

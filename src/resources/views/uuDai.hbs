@@ -1,0 +1,102 @@
+<link rel="stylesheet" href="../../CSS/signin.css" />
+<style>
+  /* ----- CSS MỚI: DÀNH CHO TRANG ƯU ĐÃI/TIN TỨC ----- */ /*
+  ================================================= */ /* ----- KHỐI CSS MỚI:
+  DÀNH CHO TRANG ƯU ĐÃI/TIN TỨC ----- */ /*
+  ================================================= */ /* Đảm bảo các biến màu
+  được khai báo (Nếu chưa có ở đầu file CSS) */ :root { --primary-color:
+  #003366; /* Xanh Navy/Beta Blue */ --accent-color: #ff7f50; /* Vàng/Cam Beta
+  */ --light-background-color: #FFFFFF; /* Nền trắng cho thẻ */ --text-color:
+  #333333; --gray-text-color: #666666; } /* 1. CONTAINER CHÍNH - TẠO LƯỚI */
+  .promo-grid { display: grid; /* Chia thành 3 cột trên màn hình lớn, co giãn
+  linh hoạt */ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:
+  20px; /* Khoảng cách giữa các thẻ (hẹp hơn) */ padding: 20px 0; margin: 0
+  auto; max-width: 1200px; } /* 2. THẺ ƯU ĐÃI */ .promo-card { display: block;
+  /* Đảm bảo cả thẻ là link */ background-color: var(--light-background-color);
+  border-radius: 8px; overflow: hidden; /* Bóng đổ nhẹ, tạo cảm giác 'nổi' */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s,
+  box-shadow 0.3s; text-decoration: none; color: var(--text-color); border:
+  none; } .promo-card:hover { transform: translateY(-5px); /* Nhấc lên rõ hơn
+  khi hover */ box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); } /* 3. KHU VỰC ẢNH -
+  QUAN TRỌNG ĐỂ GIỮ TỈ LỆ */ .card-image-wrapper { position: relative; width:
+  100%; /* Giữ tỷ lệ khung hình 3:2 (Chiều cao bằng 66.66% chiều rộng) */
+  padding-top: 66.66%; overflow: hidden; } .card-image { position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; /* Đảm bảo ảnh
+  luôn vừa khung mà không bị méo */ } /* 4. NỘI DUNG TEXT */ .card-content {
+  padding: 10px 10px 15px 10px; /* Padding ít hơn */ text-align: center; /* Căn
+  giữa nội dung giống Beta */ } .card-title { font-size: 0.95em; /* Kích thước
+  nhỏ gọn */ font-weight: 500; color: var(--text-color); margin: 0; /* Giới hạn
+  2 dòng cho tiêu đề dài */ display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden; } .promo-section-title {
+  text-align: center; color: var(--text-color); font-size: 1.8em; font-weight:
+  bold; margin-bottom: 25px; margin-top: 40px; text-transform: uppercase; } /*
+  ... (Phần CSS đã cung cấp ở trên) ... */
+</style>
+
+<main
+  class="main-content"
+  style="max-width: 1200px; display: block; margin: 40px auto;"
+>
+  <h2
+    style="text-align: center; color: var(--primary-color); margin-bottom: 20px;"
+  >
+    TIN MỚI VÀ ƯU ĐÃI
+  </h2>
+
+  <div class="promo-grid">
+
+    {{! THẺ ƯU ĐÃI MẪU 1: Đồng giá Thứ 2 }}
+    <a
+      href="https://betacinemas.vn/khuyen-mai-moi/beta-ve-re-momo-mua-lien.htm"
+      class="promo-card"
+    >
+      <div class="card-image-wrapper">
+        <img src="../../IMG/nptvere.jpg" alt="NPT vé rẻ" class="card-image" />
+      </div>
+      <div class="card-content">
+        <p class="card-title">NPT vé rẻ, MOMO mua liền</p>
+        <p class="card-date">Ngày đăng: 01/11/2025</p>
+      </div>
+    </a>
+
+    {{! THẺ ƯU ĐÃI MẪU 2: Chiếu sớm }}
+    <a
+      href="https://betacinemas.vn/khuyen-mai-moi/my-ly-thom-ngon-xem-phim-them-cuon.htm"
+      class="promo-card"
+    >
+      <div class="card-image-wrapper">
+        <img
+          src="../../IMG/uudai2.png"
+          alt="Chiếu sớm phim bom tấn"
+          class="card-image"
+        />
+      </div>
+
+      <div class="card-content">
+        <p class="card-title">MỲ LY THƠM NGON, XEM PHIM THÊM CUỐN</p>
+        <p class="card-date">Ngày đăng: 28/10/2025</p>
+      </div>
+    </a>
+
+    {{! THẺ ƯU ĐÃI MẪU 3: Thành viên }}
+    <a
+      href="https://betacinemas.vn/khuyen-mai-moi/danh-tang-10k-cho-cac-beta-er.htm"
+      class="promo-card"
+    >
+      <div class="card-image-wrapper">
+        <img
+          src="../../IMG/banmoi.png"
+          alt="Ưu đãi Thành viên"
+          class="card-image"
+        />
+      </div>
+      <div class="card-content">
+        <p class="card-title">TỔ QUỐC TRONG TIM - ÁO XỊN TẶNG NÍ</p>
+        <p class="card-date">Ngày đăng: 20/10/2025</p>
+      </div>
+    </a>
+
+    {{! Thêm các thẻ khác ở đây }}
+
+  </div>
+</main>

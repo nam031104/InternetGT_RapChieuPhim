@@ -1,0 +1,26 @@
+<style>
+  /* CSS Tùy chỉnh cho trang Giá Vé chỉ hiển thị ảnh */ .image-container {
+  width: 100%; max-width: 900px; /* Giới hạn chiều rộng tối đa của ảnh */
+  margin: 40px auto; /* Căn giữa theo chiều ngang */ background:
+  var(--light-background-color); box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  border-radius: 8px; overflow: hidden; /* Đảm bảo ảnh không tràn ra khỏi
+  container */ border: 1px solid var(--border-color); } .price-image { width:
+  100%; /* Ảnh sẽ lấp đầy chiều rộng của container */ height: auto; /* Giữ tỷ lệ
+  khung hình */ display: block; /* Loại bỏ khoảng trắng dưới ảnh */ } /* Các
+  biến màu sắc từ theme.css */ :root { --primary-color: #003366; --accent-color:
+  #ff7f50; --secondary-accent-color: #FF5733; --background-color: #F7F7F7;
+  --light-background-color: #FFFFFF; --text-color: #333333; --light-text-color:
+  #FFFFFF; --gray-text-color: #666666; --border-color: #CCCCCC; --error-color:
+  #C70039; }
+</style>
+
+<main class="main-content">
+  <div class="image-container">
+    {{! Thay đổi đường dẫn ảnh của bạn tại đây }}
+    <img
+      src="../../IMG/giave.png"
+      alt="Bảng giá vé xem phim"
+      class="price-image"
+    />
+  </div>
+</main>

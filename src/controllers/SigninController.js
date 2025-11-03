@@ -15,6 +15,8 @@ class SigninController {
         return res.redirect("/customer");
       } else if (req.session.user.vaitro === "staff") {
         return res.redirect("/employee");
+      } else if (req.session.user.vaitro === "quanly") {
+        return res.redirect("/quanly");
       }
     }
 
@@ -96,6 +98,8 @@ class SigninController {
           return res.redirect("/customer");
         } else if (user.vaitro === "staff") {
           return res.redirect("/employee");
+        } else if (user.vaitro === "quanly") {
+          return res.redirect("/quanly");
         } else {
           return res.render("signin", {
             error: "Tài khoản không có vai trò hợp lệ.",
